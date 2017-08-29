@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Unity AssetBundle 学习笔记 | 个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="运行环境 Unity2017 AssetBundle 打包可用于热更新, 也可用于缩减安装包大小(将占内存的资源打包放到服务器中,程序启动后再下载存储到本地,而不是将这些资源包含在安装包中) 等. 打包前准备打包前需要设置资源的 AB(AssetBundle 简称) 包名称. 1.手动设置    在Unity编辑器中选中资源对象后, 在Inspector视图的底部,前面为 AB包名称(‘/‘会到处">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity AssetBundle 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/08/29/assetbundle-learn/index.html">
+<meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="运行环境 Unity2017 AssetBundle 打包可用于热更新, 也可用于缩减安装包大小(将占内存的资源打包放到服务器中,程序启动后再下载存储到本地,而不是将这些资源包含在安装包中) 等. 打包前准备打包前需要设置资源的 AB(AssetBundle 简称) 包名称. 1.手动设置    在Unity编辑器中选中资源对象后, 在Inspector视图的底部,前面为 AB包名称(‘/‘会到处">
+<meta property="og:image" content="http://yoursite.com/2017/08/29/assetbundle-learn/assetbundle-learn/AssetBundleNames.png">
+<meta property="og:updated_time" content="2017-08-29T09:54:04.874Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity AssetBundle 学习笔记">
+<meta name="twitter:description" content="运行环境 Unity2017 AssetBundle 打包可用于热更新, 也可用于缩减安装包大小(将占内存的资源打包放到服务器中,程序启动后再下载存储到本地,而不是将这些资源包含在安装包中) 等. 打包前准备打包前需要设置资源的 AB(AssetBundle 简称) 包名称. 1.手动设置    在Unity编辑器中选中资源对象后, 在Inspector视图的底部,前面为 AB包名称(‘/‘会到处">
+<meta name="twitter:image" content="http://yoursite.com/2017/08/29/assetbundle-learn/assetbundle-learn/AssetBundleNames.png">
+  
+    <link rel="alternate" href="/atom.xml" title="个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">个人博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-assetbundle-learn" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/29/assetbundle-learn/" class="article-date">
+  <time datetime="2017-08-29T07:50:54.467Z" itemprop="datePublished">2017-08-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Unity AssetBundle 学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>运行环境 Unity2017</p>
+<p>AssetBundle 打包可用于热更新, 也可用于缩减安装包大小(将占内存的资源打包放到服务器中,程序启动后再下载存储到本地,而不是将这些资源包含在安装包中) 等.</p>
+<h2 id="打包前准备"><a href="#打包前准备" class="headerlink" title="打包前准备"></a>打包前准备</h2><p>打包前需要设置资源的 AB(AssetBundle 简称) 包名称.</p>
+<h4 id="1-手动设置"><a href="#1-手动设置" class="headerlink" title="1.手动设置"></a>1.手动设置</h4><p><img src="assetbundle-learn/AssetBundleNames.png" alt=""><br>    在Unity编辑器中选中资源对象后, 在Inspector视图的底部,前面为 AB包名称(‘/‘会到处AB包时会创建对应文件夹), 后面为Variant(私以为文件后缀名)</p>
+<h4 id="2-代码设置"><a href="#2-代码设置" class="headerlink" title="2.代码设置"></a>2.代码设置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">string tObjPath = AssetDatabase.GetAssetPath(Selection.activeObject);  //获取选中资源对象路径</div><div class="line">string tDocPath = Directory.GetParent(tObjPath).ToString(); //获取资源的文件夹路径</div><div class="line">AssetImporter aimp = AssetImporter.GetAtPath(tObjPath);</div><div class="line">aimp.assetBundleName = tDocPath.ToLower();                  // 设置 AB 包名称</div><div class="line">aimp.assetBundleVariant = &quot;unity3d&quot;;                        // 设置 AB 扩展名</div><div class="line">aimp.SaveAndReimport();                                     // 保存资源选项,并重新导入</div><div class="line">AssetDatabase.Refresh();</div></pre></td></tr></table></figure>
+<p>该代码实现: 将选中资源的AB包名称(默认为小写) 设置为资源文件夹路径, 扩展名称设置为 unity3d.  之所以设置AB包名为文件夹路径, 是可把目录中的所有资源打包成一个 AB 包, 减少包数量, 不然包过多不方便管理</p>
+<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static AssetBundleManifest BuildPipeline.BuildAssetBundles(string outputPath, BuildAssetBundleOptions assetBundleOptions, BuildTarget targetPlatform);</div></pre></td></tr></table></figure>
+<p>官方打包函数声明.会把所有设置AB名称的资源都打包<br>　　outputPath 打出包存放路径;<br>　　assetBundleOptions 打包的选项(下面为 常用的三种格式)<br>　　　　BuildAssetBundleOptions.None: 默认选项,使用 LZMA 格式压缩, 可减小文件大小,但是加载时需解压会有少量消耗. 使用AB包中任何资源,整个包都会被优先解压; 一旦包被解压使用后,包会以LZ4格式重新被压缩存储到本地,该格式使用包中资源时不需要解压整个包<br>　　　　BuildAssetBundleOptions.UncompressedAssetBundle: 不压缩数据,包会大,不需要加压加载速度回快点<br>　　　　BuildAssetBundleOptions.ChunkBasedCompression: 使用 LZ4 格式压缩包, 包大小会比 LZMA 格式压缩的大些, 但是使用包中资源不需要将整个包都解压, 速度回稍快<br>　　targetPlatform 打包的平台</p>
+<h2 id="加载并使用AB包"><a href="#加载并使用AB包" class="headerlink" title="加载并使用AB包"></a>加载并使用AB包</h2><h3 id="加载AB包"><a href="#加载AB包" class="headerlink" title="加载AB包"></a>加载AB包</h3><pre><code class="c#">public static AssetBundle AssetBundle.LoadFromFile(string path, uint crc = 0, ulong offset = 0);
+</code></pre>
+<p>　　加载AB包的函数声明. path 为之前设置的 AB 包名称  </p>
+<h3 id="获取包中的资源"><a href="#获取包中的资源" class="headerlink" title="获取包中的资源"></a>获取包中的资源</h3><pre><code class="c#">public T AssetBundle.LoadAsset&lt;T&gt;(string name);
+</code></pre>
+<p>　　使用泛型指定要获取出的资源类型, name 为资源名称(无后缀名称)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/29/assetbundle-learn/" data-id="cj6xg3ci30001twundfqrbv2p" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/29/assetbundle-learn/">Unity AssetBundle 学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 lsd<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
