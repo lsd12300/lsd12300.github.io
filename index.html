@@ -86,7 +86,7 @@
         <p>运行环境 Unity2017</p>
 <p>AssetBundle 打包可用于热更新, 也可用于缩减安装包大小(将占内存的资源打包放到服务器中,程序启动后再下载存储到本地,而不是将这些资源包含在安装包中) 等.</p>
 <h2 id="打包前准备"><a href="#打包前准备" class="headerlink" title="打包前准备"></a>打包前准备</h2><p>打包前需要设置资源的 AB(AssetBundle 简称) 包名称.</p>
-<h4 id="1-手动设置"><a href="#1-手动设置" class="headerlink" title="1.手动设置"></a>1.手动设置</h4><p><img src="assetbundle-learn/AssetBundleNames.png" alt=""><br>    在Unity编辑器中选中资源对象后, 在Inspector视图的底部,前面为 AB包名称(‘/‘会到处AB包时会创建对应文件夹), 后面为Variant(私以为文件后缀名)</p>
+<h4 id="1-手动设置"><a href="#1-手动设置" class="headerlink" title="1.手动设置"></a>1.手动设置</h4><p><img src="https://github.com/lsd12300/lsd12300.github.io/blob/master/BlogImages/AssetbundleName1.png" alt=""><br>    在Unity编辑器中选中资源对象后, 在Inspector视图的底部,前面为 AB包名称(‘/‘会到处AB包时会创建对应文件夹), 后面为Variant(私以为文件后缀名)</p>
 <h4 id="2-代码设置"><a href="#2-代码设置" class="headerlink" title="2.代码设置"></a>2.代码设置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">string tObjPath = AssetDatabase.GetAssetPath(Selection.activeObject);  //获取选中资源对象路径</div><div class="line">string tDocPath = Directory.GetParent(tObjPath).ToString(); //获取资源的文件夹路径</div><div class="line">AssetImporter aimp = AssetImporter.GetAtPath(tObjPath);</div><div class="line">aimp.assetBundleName = tDocPath.ToLower();                  // 设置 AB 包名称</div><div class="line">aimp.assetBundleVariant = &quot;unity3d&quot;;                        // 设置 AB 扩展名</div><div class="line">aimp.SaveAndReimport();                                     // 保存资源选项,并重新导入</div><div class="line">AssetDatabase.Refresh();</div></pre></td></tr></table></figure>
 <p>该代码实现: 将选中资源的AB包名称(默认为小写) 设置为资源文件夹路径, 扩展名称设置为 unity3d.  之所以设置AB包名为文件夹路径, 是可把目录中的所有资源打包成一个 AB 包, 减少包数量, 不然包过多不方便管理</p>
 <h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public static AssetBundleManifest BuildPipeline.BuildAssetBundles(string outputPath, BuildAssetBundleOptions assetBundleOptions, BuildTarget targetPlatform);</div></pre></td></tr></table></figure>
@@ -101,7 +101,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/29/assetbundle-learn/" data-id="cj6xg3ci30001twundfqrbv2p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/29/assetbundle-learn/" data-id="cj6xmufhe0001wwunt7flv9br" class="article-share-link">Share</a>
       
       
     </footer>
